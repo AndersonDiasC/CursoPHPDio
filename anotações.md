@@ -1,6 +1,6 @@
 <h1>Anotações</h1>
 
-<p color:"red">Condicionias</p>
+<p>Condicionias</p>
 
 if, else if, else, switch
 
@@ -19,3 +19,16 @@ while, do while, for, foreach
 <h1>Comandos</h1>
 
 <p>Saida</p>
+
+echo,print,var_dump,print_r
+
+<p>Dados de Formulários</p>
+$_get recupera dados, mas os dados vão no header,
+
+$_post recupera os dados mas sem ir no header os dados vão somente por body
+
+
+<p>Sessões</p>
+$_SESSION
+
+<p>Arrays</p>
