@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,6 +13,15 @@
     <p>Formulario de Inscrição de Competidores</p>
 
     <form action = "vars.php" method="post">
+        <?php
+            $erro = isset($_SESSION['error']) ?  $_SESSION['error']:'';
+            if(!empty($erro)){
+                echo $erro;
+                
+            }
+
+            $sucess = isset
+        ?>
     <p>Nome: <input type"text" name="nome"/></p>
     <p>Idade: <input type"text" name="idade"/></p>
     <p><input type="submit" value="Salvar"/></p>

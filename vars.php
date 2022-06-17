@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 $categorias = [];
 
 $categorias[] = 'Infantil';
@@ -11,44 +11,63 @@ $nome = $_POST['nome'];
 $idade = $_POST['idade'];
 
 if (empty($nome) && empty($idade)) {
-   echo "Os Campos não podem ser vazios";
-   return;
+  $_SESSION['error']= "Os Campos NOME e IDADE não podem ser vazios";
+  header('location: index.php');
+  return;
+
 } else if (empty($nome)) {
-   echo "O Campo Nome não pode ser vazio";
+   $_SESSION['error']= "Os Campos NOME não pode ser vazio";
+   header('location: index.php');
    return;
+   
 } else if (empty($idade)) {
-   echo "O Campo Idade não pode ser vazio";
+   $_SESSION['error']= "Os Campos IDADE não pode ser vazio";
+   header('location: index.php');
    return;
+
 }
 
-if (strlen($nome) < 3) {
-   echo 'O nome deve conter mais que 3 caracteres';
+if (strlen($nome) < 3 && !empty($nome)) {
+   $_SESSION['error']= "Os Campos NOME está muito curto";
+   header('location: index.php');
    return;
 }
 if (strlen($nome) > 40) {
-   echo 'O nome é muito extenso';
+   $_SESSION['error']= "Os Campos NOME está muito grande";
+   header('location: index.php');
+   $_SESSION['error']='';
    return;
 }
 
 
-if (!is_numeric($idade)) {
-   echo 'Digite um Valor Numérico para o campo idade!!';
+if (!is_numeric($idade) && !empty($idade)) {
+   $_SESSION['error']= "Os Campos IDADE precisa ser numérico";
+   header('location: index.php');
    return;
 }
 if ($idade >= 6 && $idade <= 12) {
    foreach ($categorias as $indice => $valor) {
       if ($categorias[$indice] == 'Infantil')
-         echo "O N                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  adador " . $nome . "  deverá competir na categoria " . $categorias[$indice];
+      {
+         $_SESSION['sucess']=  "O Nadador " . $nome . "  deverá competir na categoria " . $categorias[$indice];
+         header('location: index.php');
+   return;
+      }
+   
    }
 } else if ($idade >= 13 && $idade < 18) {
    foreach ($categorias as $indice => $valor) {
       if ($categorias[$indice] == 'Adolescente') {
-         echo "O Nadador " . $nome . "  deverá competir na categoria " . $categorias[$indice];
+         $_SESSION['sucess']=  "O Nadador " . $nome . "  deverá competir na categoria " . $categorias[$indice];
+         header('location: index.php');
+   return;
       }
    }
 } else {
    foreach ($categorias as $indice => $valor) {
       if ($categorias[$indice] == 'Adulto')
-         echo "O Nadador " . $nome . "  deverá competir na categoria " . $categorias[$indice];
+      $_SESSION['sucess']=  "O Nadador " . $nome . "  deverá competir na categoria " . $categorias[$indice];
+      header('location: index.php');
+   return;
    }
 }
