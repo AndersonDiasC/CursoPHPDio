@@ -27,12 +27,12 @@ if (empty($nome) && empty($idade)) {
 
 }
 
-if (strlen($nome) < 3 && !empty($nome)) {
+else if (strlen($nome) < 3 && !empty($nome)) {
    $_SESSION['error']= "Os Campos NOME está muito curto";
    header('location: index.php');
    return;
 }
-if (strlen($nome) > 40) {
+else if (strlen($nome) > 40) {
    $_SESSION['error']= "Os Campos NOME está muito grande";
    header('location: index.php');
    $_SESSION['error']='';
@@ -40,12 +40,12 @@ if (strlen($nome) > 40) {
 }
 
 
-if (!is_numeric($idade) && !empty($idade)) {
+else if (!is_numeric($idade) && !empty($idade)) {
    $_SESSION['error']= "Os Campos IDADE precisa ser numérico";
    header('location: index.php');
    return;
 }
-if ($idade >= 6 && $idade <= 12) {
+else if ($idade >= 6 && $idade <= 12) {
    foreach ($categorias as $indice => $valor) {
       if ($categorias[$indice] == 'Infantil')
       {

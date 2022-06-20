@@ -14,13 +14,18 @@ session_start();
 
     <form action = "vars.php" method="post">
         <?php
+         $sucess = isset($_SESSION['sucess']) ?  $_SESSION['sucess']:'';
+         if(!empty($sucess)){
+             echo $sucess;
+             
+         }
             $erro = isset($_SESSION['error']) ?  $_SESSION['error']:'';
             if(!empty($erro)){
                 echo $erro;
                 
             }
 
-            $sucess = isset
+          
         ?>
     <p>Nome: <input type"text" name="nome"/></p>
     <p>Idade: <input type"text" name="idade"/></p>
